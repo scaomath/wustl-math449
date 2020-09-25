@@ -16,11 +16,22 @@ def df(x):
     '''
     return 3*x**2
 
-def newtonArray(f, df, x0, n):
+def newtonArray(f, df, x0, tol=1e-8, maxIter=100):
     '''
-    Replace the pass with the code, try replacing Newton's method with a simple relaxation.
+    tol: tolerance, stop Newton whenever
+    |x - x_newton|<tol
     '''
-    pass
+    x = x0
+    x_val = np.zeros((maxIter+1, ))
+    it = 0 # it is the number of iterations
+    x_val[it] = x0
+    while np.abs(x - 2**(1/3)) > tol and it < maxIter:
+        x -= f(x)/df(x)
+        it += 1
+        x_val[it] = x
+    
+    # x -= something means x = x- something
+    return x_val
 
 def plotError(y, x):
     '''
