@@ -21,11 +21,11 @@ def getMatrix(n=10, isDiagDom=True):
 
     # Precompute sparse matrix
     if isDiagDom:
-        diagonal[:] = 1 + 2/n
+        diagonal[:] = 2 + 1/n
     else:
-        diagonal[:] = 2/n
-    lower[:] = -1/n  #1
-    upper[:] = -1/n  #1
+        diagonal[:] = 2
+    lower[:] = -1  #1
+    upper[:] = -1  #1
     # Insert boundary conditions
     diagonal[0] = 1
     upper[0] = 0
@@ -46,7 +46,7 @@ def getAuxMatrix(A):
     D: array
     L, U: matrices
     '''
-    m = A.shape[0]
+    # m = A.shape[0]
     D = csr_matrix.diagonal(A)
     L = -tril(A, k=-1)
     U = -triu(A, k=1)
@@ -56,7 +56,9 @@ def plotConvergence(x_true, x, k=2, scale='log'):
     '''
     Plot the error ||x[i] - x_true||_k against i
     x_true: (n,) vector
-    x: (m, n) matrix, x[i] is the i-th iterate, m: total number of iterations
+    x: (m, n) matrix, x[i] is the i-th iterate, 
+    x[0] = x0 is the initial guess
+    m: total number of iterations
     scale: 'log' or 'linear'
     k: 1,2,..., of Inf
     '''
