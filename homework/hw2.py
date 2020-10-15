@@ -1,6 +1,6 @@
 #%%
 import numpy as np
-from numpy.linalg import *
+from numpy.linalg import norm
 import matplotlib.pyplot as plt
 from scipy.sparse import *
 Inf = np.inf
@@ -21,7 +21,7 @@ def getMatrix(n=10, isDiagDom=True):
 
     # Precompute sparse matrix
     if isDiagDom:
-        diagonal[:] = 2 + 1/n
+        diagonal[:] = 2 + 1/n**2
     else:
         diagonal[:] = 2
     lower[:] = -1  #1

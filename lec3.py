@@ -2,6 +2,7 @@
 from homework.hw2 import *
 import numpy as np
 from numpy.linalg import norm
+import matplotlib.pyplot as plt
 # %% compressed sparse row or csr
 A = getMatrix(n=5)
 # generate a random vector as the solution 
@@ -64,4 +65,11 @@ x = jacobiIteration(A, b, numIter = 2000)
 
 
 
+# %%
+def getMatrixNew():
+    pass
+# %%
+# from numpy.linalg import norm
+# import numpy.linalg as linalg# %%
+# from numpy.linalg import *
 # %%
