@@ -27,10 +27,10 @@ def getMatrix(n=10, isDiagDom=True):
     lower[:] = -1  #1
     upper[:] = -1  #1
     # Insert boundary conditions
-    diagonal[0] = 1
-    upper[0] = 0
-    diagonal[n] = 1
-    lower[-1] = 0
+    # diagonal[0] = 1
+    # upper[0] = 0
+    # diagonal[n] = 1
+    # lower[-1] = 0
 
     
     A = diags(
