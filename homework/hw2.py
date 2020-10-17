@@ -70,13 +70,13 @@ def plotConvergence(x_true, x, k=2, scale='log', rate=True):
     error = np.zeros(numIter)
     for i in range(numIter):
         error[i] = norm(x_true - x[i], k)
-    if (scale is 'log') and (not rate):
+    if (scale == 'log') and (not rate):
         plt.semilogy(error)
-    elif (scale is 'linear') and (not rate):
+    elif (scale == 'linear') and (not rate):
         plt.plot(error)
-    elif (scale is 'log') and rate:
+    elif (scale == 'log') and rate:
         plt.plot(np.log(error[1:]/error[:-1]))
-    elif (scale is 'linear') and rate:
+    elif (scale =='linear') and rate:
         plt.plot(error[1:]/error[:-1])
 
 
