@@ -2,7 +2,9 @@
 import numpy as np
 from numpy.linalg import norm
 import matplotlib.pyplot as plt
-from scipy.sparse import *
+from scipy.sparse.csr import csr_matrix
+from scipy.sparse.extract import tril, triu
+from scipy.sparse.construct import diags
 Inf = np.inf
 
 # %%
