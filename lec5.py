@@ -9,7 +9,7 @@ n = 10
 I = np.diag(np.ones(n)) 
 A = 2*I - np.diag(np.ones(n-1), k=1) -  np.diag(np.ones(n-1), k=-1)
 print(A)
-T = I - A/2 # T is the matrix in the Jacobi iteration
+T = I - A/2 # T is the matrix in the Jacobi iteration D^{-1}(L+U)
 
 # %%
 tol = 1e-4
