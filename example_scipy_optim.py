@@ -54,20 +54,24 @@ def rosenbrock_grad(x):
 results = optimize.minimize(rosenbrock, 
                             x0=[4, 4], method='Newton-CG', 
                             jac=rosenbrock_grad, 
-                            options={'xtol': 1e-6,  'disp': True}, 
+                            options={'xtol': 1e-6,  
+                                     'disp': True}, 
                             callback=print)
 
 # %% adding a customized callback
 def callback_func(x):
-    global num_f_vals, x_vals
+    global num_f_vals, x_vals, f_vals
     print(f'{num_f_vals:4d}   {x[0]: 3.6f}   {x[1]: 3.6f}')
     num_f_vals += 1
+    f_vals.append(rosenbrock(x))
     x_vals = np.append(x_vals, [x], axis=0)
 
 num_f_vals=0
 x_vals = np.array([[4,4]])
+f_vals = [rosenbrock(x_vals[0])]
 
-results = optimize.minimize(rosenbrock, x0=x_vals, method='Newton-CG', 
+results = optimize.minimize(rosenbrock, x0=x_vals, 
+               method='Newton-CG', 
                jac=rosenbrock_grad, 
                options={'xtol': 1e-6, 'disp': True}, 
                callback=callback_func)
@@ -76,3 +80,13 @@ plot_gradient_descent(func, x_vals[:,0], x_vals[:,1], box=(-3,3), step=10, scale
 
 
 # %%
+def func3(c,b):
+    x = c+b
+    return x
+func3(1,2)
+print(c,b) # not defined because c and b are only accessed in func()'s call
+# %% np.append example
+# x and what is appended along axis 0 has to have the same
+# shape in axis 1
+x = np.array([[1,2], [4, 10]])
+np.append(x, [[3, 5]], axis=0)
